@@ -8,20 +8,28 @@ import { Register } from "../pages/Register";
 import { Home } from "../pages/Home";
 
 // Enrutador principal
-export const AppRouter = () => {
+export const AppRouter = ({ authStatus, onLogin, onLogout }) => {
   return (
     <Routes>
       {/* Rutas publicas */}
-      <Route element={<PublicRoutes />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+      <Route element={<PublicRoutes authStatus={authStatus} />}>
+        <Route path="/login" element={<Login onLoginSucces={onLogin} />} />
+        <Route
+          path="/register"
+          element={<Register onLoginSucces={onLogin} />}
+        />
       </Route>
       {/* Rutas privadas */}
-      <Route element={<PrivateRoutes />}>
+      <Route element={<PrivateRoutes authStatus={authStatus} />}>
         <Route path="/home" element={<Home />} />
       </Route>
 
-      <Route path="*" element={<Navigate to={"/login"} />} />
+      <Route
+        path="*"
+        element={
+          <Navigate to={authStatus === "authenticated" ? "/home" : "/login"} />
+        }
+      />
     </Routes>
   );
 };

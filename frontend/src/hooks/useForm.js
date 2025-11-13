@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export const useForm = (initialValue) => {
-    const [values, setValues] = useState(initialValue)
+export const useForm = (initialValues={}) => {
+    const [values, setValues] = useState(initialValues)
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -12,7 +12,7 @@ export const useForm = (initialValue) => {
     };
 
     const handleReset = () => {
-        setValues(initialValue);
+        setValues(initialValues);
     };
 
     return {

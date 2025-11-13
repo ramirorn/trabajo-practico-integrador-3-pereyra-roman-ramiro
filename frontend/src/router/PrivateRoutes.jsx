@@ -1,21 +1,7 @@
-import { use, useEffect, useState } from "react";
+// import { use, useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router";
+// import { Loading } from "../components/Loading";
 
-export const PrivateRoutes = () => {
-  const [isLogged, setIsLogged] = useState(false);
-  useEffect(() => {
-    const userIsLogged = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/api/login", {
-          credentials: "include",
-        });
-        setIsLogged(response.ok);
-      } catch (err) {
-        setIsLogged(false);
-      }
-      userIsLogged();
-    };
-  }, []);
-
-  return isLogged ? <Outlet /> : <Navigate to={"/login"} />;
+export const PrivateRoutes = ({authStatus}) => {
+  return authStatus === "authenticated" ? <Outlet /> : <Navigate to={"/login"} />;
 };
