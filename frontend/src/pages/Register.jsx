@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "../hooks/useForm.js";
 import { useState } from "react";
 
@@ -131,6 +131,7 @@ export const Register = () => {
             >
               Reiniciar Formulario
             </button>
+            <p className="m-2">Ya tienes cuenta? <Link className="text-blue-500 hover:text-blue-700 hover:underline" to="/login">Iniciar Sesión</Link></p>
           </div>
         </div>
       </div>
