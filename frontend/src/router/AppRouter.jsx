@@ -14,10 +14,7 @@ export const AppRouter = ({ authStatus, onLogin, onLogout }) => {
       {/* Rutas publicas */}
       <Route element={<PublicRoutes authStatus={authStatus} />}>
         <Route path="/login" element={<Login onLoginSucces={onLogin} />} />
-        <Route
-          path="/register"
-          element={<Register onLoginSucces={onLogin} />}
-        />
+        <Route path="/register" element={<Register />} />
       </Route>
       {/* Rutas privadas */}
       <Route element={<PrivateRoutes authStatus={authStatus} />}>
