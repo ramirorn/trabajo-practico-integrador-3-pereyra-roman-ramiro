@@ -6,7 +6,7 @@ import { PublicRoutes } from "./PublicRoutes";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { Home } from "../pages/Home";
-
+import { Profile } from "../pages/Profile";
 // Enrutador principal
 export const AppRouter = ({ authStatus, onLogin, onLogout }) => {
   return (
@@ -19,6 +19,7 @@ export const AppRouter = ({ authStatus, onLogin, onLogout }) => {
       {/* Rutas privadas */}
       <Route element={<PrivateRoutes authStatus={authStatus} />}>
         <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile onLogout={onLogout} />} />
       </Route>
 
       <Route
