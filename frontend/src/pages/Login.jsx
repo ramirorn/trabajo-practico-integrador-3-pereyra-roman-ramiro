@@ -16,8 +16,12 @@ export const Login = ({ onLoginSucces }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
     setError("");
+    if (!values.username.trim() || !values.password.trim()) {
+      setError("Username y password son requeridos");
+      return;
+    }
+    setLoading(true);
     try {
       const response = await fetch("http://localhost:3000/api/login", {
         method: "POST",
@@ -32,7 +36,7 @@ export const Login = ({ onLoginSucces }) => {
       if (response.ok) {
         onLoginSucces();
       } else {
-        setError("Credenciales invalidas")
+        setError("Credenciales invalidas");
         alert(data.message);
         handleReset();
       }
@@ -43,7 +47,6 @@ export const Login = ({ onLoginSucces }) => {
       setLoading(false);
     }
   };
-
 
   return (
     <>
@@ -88,7 +91,15 @@ export const Login = ({ onLoginSucces }) => {
             >
               Reiniciar Formulario
             </button>
-            <button className="p-3">No tienes cuenta? <Link to="/register" className="text-blue-500 py-5 hover:underline">Regístrate aquí</Link></button>
+            <button className="p-3">
+              No tienes cuenta?{" "}
+              <Link
+                to="/register"
+                className="text-blue-500 py-5 hover:underline"
+              >
+                Regístrate aquí
+              </Link>
+            </button>
           </div>
         </div>
       </div>
