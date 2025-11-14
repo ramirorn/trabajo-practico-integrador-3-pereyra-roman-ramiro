@@ -18,7 +18,23 @@ export const NavBar = ({ authStatus, onLogout }) => {
       console.log(err);
     }
   };
+  const neonPurpleStyle = {
+    color: "#a855f7", // Purple 400 - Color base
+    textShadow: `
+      0 0 7px #7e22ce,    /* Purple 600: Sombra suave */
+      0 0 20px #a855f7,   /* Purple 400: Sombra intensa */
+      0 0 40px #c084fc     /* Purple 500: Brillo externo */
+    `,
+  };
 
+  const logoutNeonStyle = {
+    color: "black",
+    textShadow: `
+      0 0 7px #7e22ce,
+      0 0 20px #a855f7,
+      0 0 40px #c084fc
+    `,
+  };
   return (
     <nav className="bg-gray-1000 text-gray-100 shadow-lg border-b border-gray-700 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,7 +43,8 @@ export const NavBar = ({ authStatus, onLogout }) => {
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="text-2xl font-bold text-purple-600 hover:text-purple-900 transition-colors duration-200"
+              className="hidden md:inline-block text-purple-400 px-5 py-2 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-purple-900/40 hover:text-purple-300 hover:border-purple-400 transition-all duration-300"
+              style={neonPurpleStyle}
             >
               TaskApp
             </Link>
@@ -63,25 +80,29 @@ export const NavBar = ({ authStatus, onLogout }) => {
               <>
                 <Link
                   to="/home"
-                  className="text-purple-600 hover:bg-purple-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="hidden md:inline-block text-purple-400 px-5 py-2 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-purple-900/40 hover:text-purple-300 hover:border-purple-400 transition-all duration-300"
+                  style={neonPurpleStyle}
                 >
                   Home
                 </Link>
                 <Link
                   to="/tasks"
-                  className="text-purple-600 hover:bg-purple-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="hidden md:inline-block text-purple-400 px-5 py-2 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-purple-900/40 hover:text-purple-300 hover:border-purple-400 transition-all duration-300"
+                  style={neonPurpleStyle}
                 >
                   Tasks
                 </Link>
                 <Link
                   to="/profile"
-                  className="text-purple-600 hover:bg-purple-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="hidden md:inline-block text-purple-400 px-5 py-2 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-purple-900/40 hover:text-purple-300 hover:border-purple-400 transition-all duration-300"
+                  style={neonPurpleStyle}
                 >
                   Profile
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="bg-purple-600 hover:bg-purple-900 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="bg-purple-700/50 hidden md:inline-block text-purple-400 px-5 py-2 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-purple-900/40 hover:text-purple-300 hover:border-purple-400 transition-all duration-300"
+                  style={logoutNeonStyle}
                 >
                   Logout
                 </button>
@@ -90,13 +111,15 @@ export const NavBar = ({ authStatus, onLogout }) => {
               <>
                 <Link
                   to="/login"
-                  className="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="hidden md:inline-block text-purple-400 px-5 py-2 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-purple-900/40 hover:text-purple-300 hover:border-purple-400 transition-all duration-300"
+                  style={neonPurpleStyle}
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                   className="bg-purple-700/50 hidden md:inline-block text-purple-400 px-5 py-2 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-purple-900/40 hover:text-purple-300 hover:border-purple-400 transition-all duration-300"
+                  style={logoutNeonStyle}
                 >
                   Register
                 </Link>
@@ -145,7 +168,8 @@ export const NavBar = ({ authStatus, onLogout }) => {
               <>
                 <Link
                   to="/login"
-                  className="block text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  className="hidden md:inline-block bg-purple text-purple-400 px-5 py-2 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-purple-900 hover:text-purple-300 hover:border-purple-400 transition-all duration-300"
+                  style={neonPurpleStyle}
                   onClick={() => setMenuOpen(false)}
                 >
                   Login
