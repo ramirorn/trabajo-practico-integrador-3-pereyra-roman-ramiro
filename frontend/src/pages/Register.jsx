@@ -6,7 +6,6 @@ export const Register = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
   const { values, handleChange, handleReset } = useForm({
     username: "",
     email: "",
@@ -15,11 +14,9 @@ export const Register = () => {
     lastname: "",
     dni: "",
   });
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
-
     if (
       !values.username.trim() ||
       !values.email.trim() ||
@@ -49,92 +46,127 @@ export const Register = () => {
         setError(data.message || "Error al registrar usuario");
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
       setError("Error al conectar con el servidor");
     } finally {
       setLoading(false);
     }
   };
 
+  const neonTitleStyle = {
+    color: "#4ade80",
+    textShadow: `
+      0 0 7px #16a34a,
+      0 0 20px #4ade80,
+      0 0 40px #22c55e
+    `,
+  };
+
+  const neonButtonStyle = {
+    boxShadow: "0 0 8px #fb923c, 0 0 20px #fb923c",
+  };
   return (
-    <>
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-        <div className="w-full max-w-sm">
-          <form
-            className="bg-white p-8 rounded-lg shadow-xl w-full max-w-sm"
-            onSubmit={handleSubmit}
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-950 flex items-center justify-center p-6">
+      <div className="w-full max-w-lg">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-gray-900/80 border border-gray-800 backdrop-blur-sm rounded-2xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.6)]"
+        >
+          <h2
+            className="text-3xl font-extrabold text-center mb-6"
+            style={neonTitleStyle}
           >
-            <h2 className="text-2xl font-bold text-center mb-6">
-              Crear Cuenta
-            </h2>
-            {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+            Crear Cuenta
+          </h2>
+
+          {error && (
+            <div className="mb-4 text-sm text-red-400 bg-red-950/30 border border-red-800 p-3 rounded">
+              {error}
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <input
-              className="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               type="text"
               name="username"
-              placeholder="Username"
+              placeholder="Nombre de Usuario"
               value={values.username}
               onChange={handleChange}
             />
+
             <input
-              className="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="text"
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              type="email"
               name="email"
-              placeholder="Email"
+              placeholder="Correo Electrónico"
               value={values.email}
               onChange={handleChange}
             />
+
             <input
-              className="w-full px-4 py-2 border rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               value={values.password}
               onChange={handleChange}
             />
+
             <input
-              className="w-full px-4 py-2 border rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               type="text"
               name="name"
-              placeholder="Name"
+              placeholder="Nombre"
               value={values.name}
               onChange={handleChange}
             />
+
             <input
-              className="w-full px-4 py-2 border rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               type="text"
               name="lastname"
-              placeholder="LastName"
+              placeholder="Apellido"
               value={values.lastname}
               onChange={handleChange}
             />
+
             <input
-              className="w-full px-4 py-2 border rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               type="text"
               name="dni"
               placeholder="DNI"
               value={values.dni}
               onChange={handleChange}
             />
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-all"
-            >
-              Registrar
-            </button>
-          </form>
-          <div className="text-center mt-4 w-full max-w-sm">
-            <button
-              className="text-white bg-blue-500 text-black py-2 px-3 font-bold rounded-lg hover:bg-blue-600 text-sm transition-all"
-              onClick={handleReset}
-            >
-              Reiniciar Formulario
-            </button>
-            <p className="m-2">Ya tienes cuenta? <Link className="text-blue-500 hover:text-blue-700 hover:underline" to="/login">Iniciar Sesión</Link></p>
           </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            style={neonButtonStyle}
+            className="w-full mt-6 bg-gradient-to-r from-orange-500 to-rose-500 text-white font-semibold py-3 rounded-lg hover:brightness-110 transition disabled:opacity-60"
+          >
+            {loading ? "Registrando..." : "Registrar"}
+          </button>
+        </form>
+
+        <div className="mt-6 text-center">
+          <button
+            onClick={handleReset}
+            className="inline-block bg-gray-800 text-gray-200 px-4 py-2 rounded-md font-medium hover:bg-gray-700 transition"
+          >
+            Reiniciar Formulario
+          </button>
+
+          <p className="mt-4 text-sm text-gray-400">
+            ¿Ya tienes una cuenta?{" "}
+            <Link className="text-rose-400 hover:underline" to="/login">
+              Iniciar Sesión
+            </Link>
+          </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };

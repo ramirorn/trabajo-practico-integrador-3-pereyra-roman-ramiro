@@ -38,15 +38,15 @@ export const App = () => {
 
   if (authStatus === "checking") {
     return (
-      <div>
+      <div className="flex justify-center items-center min-h-screen bg-gray-950">
         <Loading />;
       </div>
     );
   }
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-950">
+      <NavBar authStatus={authStatus} onLogout={handleLogout} />
       <main className="flex-1">
-        <NavBar authStatus={authStatus} onLogout={handleLogout} />
         <AppRouter
           authStatus={authStatus}
           onLogin={handleLogin}
