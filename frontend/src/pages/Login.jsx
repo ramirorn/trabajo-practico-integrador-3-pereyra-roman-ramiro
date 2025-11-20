@@ -57,7 +57,7 @@ export const Login = ({ onLoginSucces }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-950 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-linear-to-b from-gray-900 via-gray-800 to-gray-950 flex items-center justify-center p-6">
       <div className="w-full max-w-md">
         <form
           onSubmit={handleSubmit}
@@ -99,7 +99,7 @@ export const Login = ({ onLoginSucces }) => {
             type="submit"
             disabled={loading}
             style={neonButtonStyle}
-            className="w-full bg-gradient-to-r from-orange-500 to-rose-500 text-white font-semibold py-3 rounded-lg hover:brightness-110 transition disabled:opacity-60"
+            className="w-full bg-linear-to-r from-orange-500 to-rose-500 text-white font-semibold py-3 rounded-lg hover:brightness-110 transition disabled:opacity-60"
           >
             {loading ? "Cargando..." : "Iniciar Sesión"}
           </button>
